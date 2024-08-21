@@ -6,6 +6,7 @@ using System.Data.SQLite;
 
 namespace AtmWebAppTesting
 {
+    [Parallelizable(ParallelScope.Children)]
     public class AdminTasks : DriverSetup
     {
         private readonly string newUserName;
@@ -18,6 +19,7 @@ namespace AtmWebAppTesting
         }
 
         [Test, Order(1)]
+        [Parallelizable(ParallelScope.Self)]
         public void LoginAsAdmin()
         {
             AdminDashboardPOM adminDashboardPOM = new AdminDashboardPOM(driver);
@@ -41,6 +43,7 @@ namespace AtmWebAppTesting
         }
 
         [Test, Order(2)]
+        [Parallelizable(ParallelScope.Self)]
         public void AddNewUser()
 
         {
@@ -66,6 +69,7 @@ namespace AtmWebAppTesting
         }
 
         [Test, Order(3)]
+        [Parallelizable(ParallelScope.Self)]
         public void SearchForUser()
         {
             AdminDashboardPOM adminDashboardPOM = new AdminDashboardPOM(driver);
@@ -83,6 +87,7 @@ namespace AtmWebAppTesting
         }
 
         [Test, Order(4)]
+        [Parallelizable(ParallelScope.Self)]
         public void EditAUser()
         {
             AdminDashboardPOM adminDashboardPOM = new AdminDashboardPOM(driver);
@@ -109,6 +114,7 @@ namespace AtmWebAppTesting
         }
 
         [Test, Order(5)]
+        [Parallelizable(ParallelScope.Self)]
         public void DeleteAUser()
         {
             AdminDashboardPOM adminDashboardPOM = new AdminDashboardPOM(driver);
