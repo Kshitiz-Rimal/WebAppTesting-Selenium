@@ -62,8 +62,6 @@ namespace AtmWebAppTesting.PageObjectModels
             log.Info("Login Button was clicked");
             test.Log(Status.Info, "Login Button was clicked");
 
-            //Waits for the user to reach dashboard
-            //WaitForElementToLoad.WaitUntilElementDisplayed(driver, 5, By.ClassName("table"));
             //User checks if they reached admin dashboard or not
             softAssertion.AssertionForTitle(driver, "AdminDashboard - ATMWebApp", "Login failed");
             return softAssertion;

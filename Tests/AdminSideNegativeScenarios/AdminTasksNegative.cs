@@ -7,7 +7,6 @@ using NUnit.Framework;
 using System;
 using System.Data.SQLite;
 using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
 
 namespace AtmWebAppTesting
 {
