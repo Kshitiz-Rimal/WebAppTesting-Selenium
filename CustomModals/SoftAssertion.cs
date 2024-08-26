@@ -7,7 +7,6 @@ using log4net.Repository;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace AtmWebAppTesting.CustomModals
 {
