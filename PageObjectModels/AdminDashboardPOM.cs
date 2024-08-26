@@ -4,7 +4,6 @@ using System.Threading;
 using System.Collections.Generic;
 using System;
 using NUnit.Framework;
-using System.Linq;
 using AtmWebAppTesting.Helpers;
 namespace AtmWebAppTesting
 {

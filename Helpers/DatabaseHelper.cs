@@ -1,6 +1,4 @@
-﻿using CsvHelper;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Data.SQLite;
 using System.IO;
 
