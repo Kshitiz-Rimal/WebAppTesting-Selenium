@@ -26,12 +26,16 @@ namespace AtmWebAppTesting
 
         [SetUp]
         public void Setup() {
+            #region // For Driver setup
             new DriverManager().SetUpDriver(new ChromeConfig());
             var options = new ChromeOptions();
-            options.AddArgument("--headless");  // Enable headless mode
+            //options.AddArgument("--headless");  // Enable headless mode
             options.AddArgument("--window-size=1920,1080");
             driver = new ChromeDriver(options);
+            driver.Manage().Window.Maximize();
+            #endregion
 
+            #region // Setup for log4net and extends report
             XmlConfigurator.Configure(new FileInfo("log4net.config"));
 
             // Initialize ExtentReports
@@ -47,14 +51,15 @@ namespace AtmWebAppTesting
             // Add some system info to the report
             extent.AddSystemInfo("OS", "Windows");
             extent.AddSystemInfo("Browser", "Chrome");
+            #endregion
 
-            test = extent.CreateTest("AtmWebAppTesting").Info("Test Started");
-
+            #region // SQlite connection
             string databaseFilePath = DatabaseHelper.GetDatabasePath("AtmWebAppTest");
             databaseHelper = new DatabaseHelper(databaseFilePath);
             SQLiteConnection connection = databaseHelper.GetConnection();
+            #endregion
 
-            driver.Manage().Window.Maximize();
+            #region //Setup Url from SQlite to driver
             SQLiteDataReader reader = databaseHelper.ReadDataFromTable(connection, "NecessaryURLs");
             while (reader.Read())
             {
@@ -64,7 +69,7 @@ namespace AtmWebAppTesting
                 }
             }
             databaseHelper.CloseConnection(connection);
-            
+            #endregion
         }
 
         [TearDown]
